@@ -1,0 +1,258 @@
+%TIPO DE DOCUMENTO
+\documentclass[12pt, titlepage]{article}
+
+%DIFERENTES PAQUETES Y ESTILOS
+\usepackage{koalatex}
+\usepackage{koalatex-tablas}
+\usepackage{koalatex-graficas}
+\usepackage{koalatex-extra}
+
+%INFORMACIÓN BÁSICA
+\title{\textbf {Título}}
+\author{Autor}
+\date{}
+
+%CUERPO DEL DOCUMENTO
+\begin{document}
+    %\maketitle Opción fácil
+
+    \begin{titlepage}
+        \begin{center}
+            \vspace*{3cm}
+            \textbf{\LARGE Plantilla de \LaTeX}
+
+            \vspace*{0.3cm}
+            \textit{\large Agora con cores \textcolor{k_blue}{p}\textcolor{k_yellow}{a}\textcolor{k_green}{s}\textcolor{k_yellow}{t}\textcolor{k_blue}{e}\textcolor{k_green}{l}!}
+
+            \vspace*{12cm}
+            \texttt{\large \textcolor{k_green}{joseko}}
+
+            \vspace*{1cm}
+            Esta é unha plantilla con exemplos de \LaTeX e distintos estilos predefinidos. A estrutura de partes e introducción é completamente \resaltado{persoalizable}, podes distribuír o documento como prefiras. Un abrazo e \cursiva{`disfrutes'} facendo as memorias \textcolor{k_yellow}{:D}
+        \end{center}
+    \end{titlepage}
+
+    %ÍNDICE
+    { \setlength{\parskip}{0pt} %Resetear o espacio entre parágrafos para facer o índice máis compacto
+      \tableofcontents }
+
+
+    %OPCIONAL
+    %\part*{Introducción} %Parte sen numeración, pero engadida a tabla de contidos
+    %\addcontentsline{toc}{part}{Introducción}
+
+
+    %CORPO
+    \newpage
+    \part{Xerarquía}
+
+    \section{Sección}
+
+    \subsection{Subsección}
+    
+    \subsubsection{Subsubsección}
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.fficia deserunt mollit anim id est laborum.
+
+    \section{Teoremas e resaltados}
+
+    \begin{theorem}
+        O teorema do punto gordo asegura que da igual a precisión do axuste, sempre é posible aumentar o tamaño do punto da gráfica para que pareza que tomaches os datos ben no laboratorio :)
+    \end{theorem}
+
+    \begin{proof}
+        Utilizando $y = mx + n$ podemos ver claramente que \texttt{linewidth = z} sendo $z > d$, con $d$ como a distancia do punto á recta.
+    \end{proof}
+
+    \begin{definition}
+        \textbf{Tenedor:} utensilio de cocina con dos o más puntas empleado para comer.
+    \end{definition}
+
+    \begin{example}
+        *velitas*
+        %\emoji{candle} \emoji{candle} \emoji{candle}
+        %IMPORTANTE: Os emoticonos requiren luatex en vez de latexmk, e activar o paquete koalatex-extra.
+        %Non utilizar sen configurar todo corretamente xa que da erro de compilación.
+    \end{example}
+
+
+    \newpage
+    \part{Funcións}
+
+    \section{Matemáticas}
+
+    \subsection{Ecuacións}
+
+    Ecuación numerada:
+    \begin{equation} \label{ec:test}
+        z = r e^{i \theta}
+    \end{equation}
+
+    %Superíndices con ^ e subíndices con _, so funciona en modo matemático (dentro de equation, align, center ou dentro de $ $)
+    %Se o sub/superíndice ten máis dun caracter, tes que poñelo entre corchetes, por exemplo, e^x está ben, pero tes que escribir e^{2x}
+
+    Ecuación sen numerar:
+    \begin{equation*}
+        f(z) = \frac{z \cdot \log{z}}{(z + i)(z - i)}
+    \end{equation*}
+
+    Varias ecuacións centradas:
+    \begin{gather}
+        f(z) = z^2 + 1 = (x + iy)^2 + 1 \nonumber \\ %nonumer - sen número
+        f(z) = \mathbf{x^2 - y^2} + 2ixy + 1 \label{ec:test2} %\mathbf para resaltar en modo matemático
+    \end{gather}
+
+    Varias ecuacións alineadas:
+    \begin{align} %Alinéanse en &
+        f(x) &= 2x + \int^a_b y^2 dy \label{ec:test3} \\
+        f(x) &= 2 (x\lambda + \frac{1}{2}y) \label{ec:test4}
+    \end{align}
+
+    Tamén se pode poñer unha ecuación dentro do texto como $\nabla \times \vec{E} = -\frac{\partial{\vec{b}}}{\partial{t}}$\cite{griffiths_2018}.
+    %Podes citar con \cite[nome]
+
+    Para referenciar unha ecuación, utilízase \ref{ec:test2}.
+
+    \subsection{Matrices}
+
+    As matrices introdúcense coma unha ecuación, teñen que estar ou ben dentro de \$ \$ ou nun entorno equation, gather ou align.
+
+    \begin{equation*}
+    \left( %Esto é un paréntese grande
+        \begin{matrix}
+        x\\
+        y\\
+        z
+        \end{matrix}
+    \right)
+    \cdot
+    \left(
+        \begin{matrix}
+        0 & 1 & 1\\
+        1 & 0 & 1\\
+        1 & 1 & 0
+        \end{matrix}
+    \right)
+    =
+    \left(
+        \begin{matrix}
+        y+z\\
+        x+z\\
+        x+y
+        \end{matrix}
+    \right)
+    \end{equation*}
+
+
+    \newpage
+    \part{Elementos gráficos}
+
+    \section{Gráficas}
+
+    \plt{graficas/test.pgf}{Gráfica cuqui}
+    %Importante incluír o paquete koalatex-graficas
+    %O primeiro argumento é o ficheiro .pgf, o segundo é o título da gráfica
+
+
+    \section{Cadros}
+
+    \subsection{Dende .csv}
+
+    \csv{cadros/test.csv} %Arquivo csv
+        {Cadro monísimo} %Caption
+        {|c|c|c|c|} %Escribir as columnas do cadro e liñas para separalas, "c" é centrado
+        {Medida & $z$ (m) & $B_{exp}$ (T) & $B_{teo}$ (T)} %Nomes das columnas a mostrar
+        {z=\colz, Bexp=\colbexp, Bteo=\colbteo} %O nome que aparece no csv e a macro que lle queres asignar no código de LaTeX
+        {\thecsvrow & \colz & \colbexp & \colbteo} %Poñer as columnas en orde
+
+    \subsection{Dende \texttt{tablesgenerator}}
+    %Ir a https://www.tablesgenerator.com e pegar o resultado
+    %Pegar o que esté entre \begin{table} e \end{table}, como o exemplo a continuación
+    
+    \cadro{Cadro xerado online}
+          {\begin{tabular}{|c|c|c|c|c|}
+                \hline
+                \rowcolor[HTML]{FBBCBA}
+                1  & 2  & 3  & 4  & 5  \\ \hline
+                \rowcolor[HTML]{FFEDB7}
+                6  & 7  & 8  & 9  & 10 \\ \hline
+                \rowcolor[HTML]{D0F2A7}
+                11 & 12 & 13 & 14 & 15 \\ \hline
+                \rowcolor[HTML]{D0E2F9}
+                16 & 17 & 18 & 19 & 20 \\ \hline
+            \end{tabular}}
+
+
+    \section{Código Python}
+    %IMPORTANTE: Require o paquete koalatex-extra e seguir as instruccións alí indicadas
+
+    \usemintedstyle{pastie}
+    \begin{minted}{python}
+        def reg_lin(x, y):
+        n = len(x)
+    
+        sx = x.sum(); sy = y.sum()
+        sxy = (x*y).sum(); sx2 = (x**2).sum(); sy2 = (y**2).sum()
+    
+        a = (sy*sx2 - sx*sxy) / (n*sx2 - sx**2)
+        b = (n*sxy - sx*sy) / (n*sx2 - sx**2)
+    
+        sdesv = ((y - a - b*x)**2).sum()
+        s = (sdesv/float(n-2))*0.5
+        sa = s*(sx2 / (n*sx2 - sx**2))**0.5
+        sb = s*(n / (n*sx2 - sx**2))**0.5
+    
+        r = (n*sxy - sx*sy)/(((n*sx2 - sx**2)*(n*sy2 - sy**2))**0.5)
+    
+        print("a=", a, "b=", b)
+        print("s=", s, "sa=", sa, "sb=", sb)
+        print("r=", r, "\n---")
+    \end{minted}
+
+
+    \section{Circuitos}
+    %IMPORTANTE: Require o paquete koalatex-extra e seguir as instruccións alí indicadas
+    %Ver documentación en https://ctan.javinator9889.com/graphics/pgf/contrib/circuitikz/doc/circuitikzmanual.pdf
+
+    \circuito{Circuito simple}
+             {\draw (0,0) to[voltage source, l=V] (0,3)
+             to[R, l=R] (3,3)
+             to[capacitor, l=C] (3,0) -- (0,0);}
+
+
+    \section{Imáxes}
+
+    \imaxe{imaxes/test.jpg}
+          {Estudante de física cando abre \LaTeX por primeira vez :))))))}
+          {9cm}
+
+    
+    %APÉNDICES
+
+    \newpage
+    \begin{appendices}
+        %Formato para a tabla de contido, ignorar
+        \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
+        \makeatletter
+        \addtocontents{toc}{%
+        \begingroup
+        \let\protect\l@chapter\protect\l@section
+        \let\protect\l@section\protect\l@subsection
+        }
+
+        %Cada sección é un apéndice
+        \section{Proba}
+
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+        \section{Bibliografía}
+
+        %Cita libros con \cite[nombre]
+
+        \bibliography{bibliografia} %Poñer a bibliografía aquí
+        \bibliographystyle{ieeetr} %Cambiar ao estilo apropiado
+
+        \addtocontents{toc}{\endgroup}
+    \end{appendices}
+
+\end{document}

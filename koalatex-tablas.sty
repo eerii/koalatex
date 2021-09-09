@@ -1,0 +1,71 @@
+\ProvidesPackage{koalatex-tablas}
+
+%PAQUETES
+%---
+\usepackage{koalatex}
+%---
+\usepackage{csvsimple} %Tablas .csv
+%---
+
+\mdfdefinestyle{tabla}{
+    linewidth = 0pt,
+    innertopmargin = 24pt,
+    innerbottommargin = 12pt,
+    backgroundcolor = k_lightblue,
+}
+
+\newmdenv[style=tabla]{recuadro_tabla}
+
+\newcommand{\csv}[6]{
+    \begin{recuadro_tabla}
+        \begin{table}[H]
+            \captionsetup{
+                format = hang,
+                justification = raggedright,
+                singlelinecheck = false,
+                labelfont = {bf},
+                font = {color=k_darkblue},
+            }
+            \caption{#2}
+
+            \begin{center}
+                \begin{adjustbox}{max width = 0.9\textwidth}
+                    \csvreader[
+                        tabular=#3, %Engadir o número de columnas e "c" para centrar, "|" para lineas verticais
+                        table head=\hline\rowcolor{k_lightyellow} %Liña horizontal que comeza a tabla
+                                    #4, %Liña horizontal despois da primeira fila
+                        late after head=\\\hline\rowcolor{white},
+                        late after line=\\\hline\rowcolor{white},
+                        separator=semicolon %[!] Cambiar en caso de ter un csv con formato distinto
+                        ]{#1} %Arquivo csv
+                        {#5} %Lista de nomes exactamente como saen no csv = crea un nome de variable en LaTeX (o que ti queiras)
+                                                                %Por exemplo, da columna "z" do csv, podemos facer z = \colz
+                                                                %[!] Evitar utilizar nomes de variables de unha soa letra ou xa existentes, pois podemos estropear algunhas funcións de LaTeX
+                        {#6} %Polo orde no que queremos mostrar as columnas na tabla, poñer as variables do paso anterior
+                                                                    %\thecsvrow indica a columna na que nos atopamos, é util para unha lista de medidas
+                \end{adjustbox}
+            \end{center}
+        \end{table}
+    \end{recuadro_tabla}
+}
+
+\newcommand{\cadro}[2]{
+    \begin{recuadro_tabla}
+        \begin{table}[H]
+            \captionsetup{
+                format = hang,
+                justification = raggedright,
+                singlelinecheck = false,
+                labelfont = {bf},
+                font = {color=k_darkblue},
+            }
+            \caption{#1}
+
+            \begin{center}
+                \begin{adjustbox}{max width = 0.9\textwidth}
+                    #2
+                \end{adjustbox}
+            \end{center}
+        \end{table}
+    \end{recuadro_tabla}
+}

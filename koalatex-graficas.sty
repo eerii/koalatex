@@ -1,0 +1,44 @@
+\ProvidesPackage{koalatex-graficas}
+
+%PAQUETES
+%---
+\usepackage{koalatex}
+%---
+\usepackage{tikz, pgf} %Gráficas pgf
+\usepackage{caption} %Descripcións persoalizadas
+%---
+
+%Configuración das gráficas
+\usetikzlibrary{external}
+\tikzexternalize[prefix=tikz/]
+
+\mdfdefinestyle{matplotlib}{
+    linewidth = 0pt,
+    skipabove = 0pt,
+    innertopmargin = 12pt,
+    innerbottommargin = 12pt,
+    backgroundcolor = k_lightlightyellow,
+}
+
+\newmdenv[style=matplotlib]{matplotlib}
+
+\newcommand{\plt}[2]{
+    \begin{figure}[H]
+        \begin{matplotlib}
+            \captionsetup{
+                format = hang,
+                justification = raggedright,
+                singlelinecheck = false,
+                labelfont = {bf},
+                font = {color=k_darkyellow},
+            }
+            \caption{#2}
+
+            \begin{center}
+                \begin{adjustbox}{max width=0.9\textwidth}
+                    \input{#1}
+                \end{adjustbox}
+            \end{center}
+        \end{matplotlib}
+    \end{figure}
+}

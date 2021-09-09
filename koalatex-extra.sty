@@ -1,0 +1,56 @@
+\ProvidesPackage{koalatex-extra}
+
+%PAQUETES
+%---
+\usepackage{koalatex}
+%---
+%Diagramas
+\usepackage[siunitx]{circuitikz} %Debuxar circuitos por código, fai que a compilación sexa máis lenta
+%---
+%Sintaxis
+\usepackage{minted} %Sintáxis para código de Python
+%IMPORTANTE: Necesitas una versión actual de Python y el paquete Pygments.
+%Instálao utilizando pip, xa sexa con pip3 install pygments, python3 -m pip install pygments, python -m pip install pygments ou a versión correspondiente ó teu sistema
+%Tamén tes que cambiar a configuración de latexmk para utilizar a opción "-shell-escape".
+%Ver toda a información en http://tug.ctan.org/macros/latex/contrib/minted/minted.pdf
+%---
+%Emojis
+%\usepackage{emoji} %Emoticonos
+%\setemojifont{Apple Color Emoji} %Tipo de letra para os emoticonos
+%IMPORTANTE: Require cambiar o compilador a luatex, en vez de latexmk.
+%Non utilizar se non está configurado corretamente xa que da erro de compilación.
+%---
+
+\mdfdefinestyle{cadro}{
+    linewidth = 0pt,
+    innertopmargin = 12pt,
+    innerbottommargin = 12pt,
+    backgroundcolor = k_lightlightyellow,
+}
+
+\surroundwithmdframed[style=cadro]{minted}
+
+\newmdenv[style=cadro]{recuadro_circuito}
+
+\newcommand{\circuito}[2]{
+    \begin{figure}[H]
+        \begin{recuadro_circuito}
+            \captionsetup{
+                format = hang,
+                justification = raggedright,
+                singlelinecheck = false,
+                labelfont = {bf},
+                font = {color=k_darkyellow},
+            }
+            \caption{#1}
+
+            \begin{center}
+                \begin{adjustbox}{max width=0.9\textwidth}
+                    \begin{tikzpicture}
+                        #2
+                    \end{tikzpicture}
+                \end{adjustbox}
+            \end{center}
+        \end{recuadro_circuito}
+    \end{figure}
+}
