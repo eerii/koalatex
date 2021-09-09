@@ -26,12 +26,20 @@ Eu recomendo [VS Code](https://code.visualstudio.com) coa extensión LaTeX Works
 Podes utilizar diferentes recadros para resaltar información. Hai predefinidos: theorem, definition, example e proof.
 Úsanse escribindo o contido entre \begin{theorem} e \end{theorem}.
 
+<img width="601" alt="Teoremas" src="https://user-images.githubusercontent.com/22449369/132727886-21e57096-1cc6-46d4-b334-4d82b7798e7d.png">
+
 **Gráficas**
 
 Carga gráficas exportadas de matplotlib con pgf usando \plt{ruta/ao/arquivo.pgf}{lenda da gráfica}. Require usar koalatex-graficas.
+
+<img width="594" alt="Graficas" src="https://user-images.githubusercontent.com/22449369/132727943-820bf9a1-da4a-4f9e-9c44-d3d2c5c154ef.png">
 
 **Cadros**
 
 Hai dúas maneiras de poñer cadros, ou ben cargando dende un arquivo csv, co comando \csv (as instruccións exactas están dentro de main.tex). Tamén podes utilizar unha táboa de tablegenerator no mesmo formato.
 
+<img width="593" alt="Cadros" src="https://user-images.githubusercontent.com/22449369/132727973-f6ef14b4-9bdd-4fa5-8ddb-aa1a40545a30.png">
+
 Ademáis, inclué soporte para código de python, debuxar circuitos, apéndices e engadir imaxes, con explacións en cada liña.
+
+<img width="602" alt="Gato" src="https://user-images.githubusercontent.com/22449369/132728009-bcb0503e-a867-4007-a0e8-a444535aca35.png">
